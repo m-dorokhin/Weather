@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weather"
+            type="com.example.weather.models.DayWeather" />
+
+    </data>
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,7 +26,7 @@
 
         <TextView
             android:id="@+id/weather_text"
-            android:text="@string/weather_text"
+            android:text="@{weather.weather, default=@string/weather_text}"
             android:layout_below="@id/date"
             android:layout_marginRight="8dp"
             android:layout_width="wrap_content"
@@ -22,7 +34,7 @@
 
         <TextView
             android:id="@+id/temp"
-            android:text="@string/temp"
+            android:text='@{String.format("%.2f", weather.temp), default=@string/temp}'
             android:layout_toRightOf="@id/weather_text"
             android:layout_below="@id/date"
             android:layout_marginRight="4dp"
@@ -47,7 +59,7 @@
 
         <TextView
             android:id="@+id/wind_direction"
-            android:text="@string/wind_direction"
+            android:text="@{weather.windDirection, default=@string/wind_direction}"
             android:layout_below="@id/weather_text"
             android:layout_toRightOf="@id/wind_label"
             android:layout_marginRight="8dp"
@@ -56,7 +68,7 @@
 
         <TextView
             android:id="@+id/wind_speed"
-            android:text="@string/wind_speed"
+            android:text="@{Double.toString(weather.windSpeed), default=@string/wind_speed}"
             android:layout_marginRight="4dp"
             android:layout_below="@id/weather_text"
             android:layout_toRightOf="@id/wind_direction"
@@ -81,7 +93,7 @@
 
         <TextView
             android:id="@+id/pressure"
-            android:text="@string/pressure"
+            android:text="@{Double.toString(weather.pressure), default=@string/pressure}"
             android:layout_marginRight="4dp"
             android:layout_below="@id/wind_label"
             android:layout_toRightOf="@id/pressure_label"
@@ -106,7 +118,7 @@
 
         <TextView
             android:id="@+id/humidity"
-            android:text="@string/humidity"
+            android:text="@{Double.toString(weather.humidity), default=@string/humidity}"
             android:layout_marginRight="4dp"
             android:layout_below="@id/pressure"
             android:layout_toRightOf="@id/humidity_label"
@@ -131,3 +143,4 @@
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
+</layout>

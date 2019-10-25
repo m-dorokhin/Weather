@@ -1,40 +1,62 @@
 package com.example.weather;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.weather.databinding.WeatherByDayBinding;
+import com.example.weather.models.DayWeather;
+
+import java.util.List;
 
 public class WeatherByDayAdapter extends RecyclerView.Adapter<WeatherByDayAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView cardView;
+    private List<DayWeather> items;
 
-        public ViewHolder(@NonNull CardView itemView) {
-            super(itemView);
-            cardView = itemView;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private WeatherByDayBinding binding;
+
+        public ViewHolder(@NonNull WeatherByDayBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
+
+        public void bind(DayWeather dayWeather)
+        {
+            binding.setWeather(dayWeather);
+            binding.executePendingBindings();
+        }
+    }
+
+    public WeatherByDayAdapter(List<DayWeather> weathers)
+    {
+        this.items = weathers;
     }
 
     @NonNull
     @Override
     public WeatherByDayAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CardView cv = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.weather_by_day, parent, false);
-        return new ViewHolder(cv);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        WeatherByDayBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.weather_by_day, parent, false);
+        return new WeatherByDayAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.bind(items.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
+    public void setItems(List<DayWeather> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
 }
