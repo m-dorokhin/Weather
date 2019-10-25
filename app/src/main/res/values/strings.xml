@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="city">Select city</string>
+    <string name="today">Today</string>
+    <string name="temp">0,0</string>
+    <string name="temp_unit">℃</string>
+    <string name="weather_text">Weather</string>
+    <string name="wind_direction">North</string>
+    <string name="wind">Wind</string>
+    <string name="wind_speed">0,0</string>
+    <string name="wind_speed_unit">m/s</string>
+    <string name="pressure_label">Pressure</string>
+    <string name="pressure">0,00</string>
+    <string name="pressure_uint">HPa</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="humidity">0,0</string>
+    <string name="humidity_unit">%</string>
+</resources>
