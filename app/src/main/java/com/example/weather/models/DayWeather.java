@@ -1,5 +1,7 @@
 package com.example.weather.models;
 
+import com.example.weather.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class DayWeather {
     public double humidity = 0;
     public String windDirection = "None";
     public double windSpeed = 0;
+    public int weatherIcon = R.drawable.d_01_clear_sky;
 
     public String getFormatedDate() {
         return new SimpleDateFormat("E yyyy.MM.dd").format(this.date);

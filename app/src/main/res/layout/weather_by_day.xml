@@ -135,7 +135,7 @@
 
         <ImageView
             android:id="@+id/weather_image"
-            android:src="@drawable/d_01_clear_sky"
+            android:src="@{weather.weatherIcon, default=@drawable/d_01_clear_sky}"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"

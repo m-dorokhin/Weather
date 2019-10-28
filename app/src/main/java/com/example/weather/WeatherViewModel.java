@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;
+import com.example.weather.helpers.IconHelper;
 import com.example.weather.models.DayWeather;
 
 import java.util.Date;
@@ -34,6 +36,7 @@ public class WeatherViewModel extends ViewModel {
     public final ObservableDouble humidity = new ObservableDouble();
     public final ObservableField<String> windDirection = new ObservableField<>("None");
     public final ObservableDouble windSpeed = new ObservableDouble();
+    public final ObservableInt weatherIcon = new ObservableInt(R.drawable.d_01_clear_sky);
 
     private final MutableLiveData<List<DayWeather>> sixteenDayWeathers = new MutableLiveData<>();
 
@@ -61,8 +64,11 @@ public class WeatherViewModel extends ViewModel {
                 if (todayWeather != null) {
                     city.set(todayWeather.name);
 
-                    if (todayWeather.weather != null && !todayWeather.weather.isEmpty())
-                        weather.set(todayWeather.weather.get(0).main);
+                    if (todayWeather.weather != null && !todayWeather.weather.isEmpty()) {
+                        TodayWeather.Weather weatherStatus = todayWeather.weather.get(0);
+                        weather.set(weatherStatus.main);
+                        weatherIcon.set(IconHelper.GetIcon(weatherStatus.icon));
+                    }
 
                     if (todayWeather.main != null) {
                         temp.set(todayWeather.main.temp - 273);
@@ -98,8 +104,11 @@ public class WeatherViewModel extends ViewModel {
                         if (item.temp != null)
                             dayWeather.temp = item.temp.day - 273;
 
-                        if (item.weather != null && !item.weather.isEmpty())
-                            dayWeather.weather = item.weather.get(0).main;
+                        if (item.weather != null && !item.weather.isEmpty()) {
+                            SixteenDaysWeather.Weather weather = item.weather.get(0);
+                            dayWeather.weather = weather.main;
+                            dayWeather.weatherIcon = IconHelper.GetIcon(weather.icon);
+                        }
 
                         dayWeather.pressure = item.pressure;
                         dayWeather.humidity = item.humidity;
