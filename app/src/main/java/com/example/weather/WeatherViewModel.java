@@ -13,6 +13,7 @@ import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;
 import com.example.weather.helpers.IconHelper;
+import com.example.weather.helpers.StringHelper;
 import com.example.weather.models.DayWeather;
 
 import java.util.Date;
@@ -34,7 +35,7 @@ public class WeatherViewModel extends ViewModel {
     public final ObservableField<String> weather = new ObservableField<>("Weather");
     public final ObservableDouble pressure = new ObservableDouble();
     public final ObservableDouble humidity = new ObservableDouble();
-    public final ObservableField<String> windDirection = new ObservableField<>("None");
+    public final ObservableInt windDirection = new ObservableInt(R.string.wind_direction);
     public final ObservableDouble windSpeed = new ObservableDouble();
     public final ObservableInt weatherIcon = new ObservableInt(R.drawable.d_01_clear_sky);
 
@@ -77,7 +78,12 @@ public class WeatherViewModel extends ViewModel {
                     }
 
                     if (todayWeather.wind != null) {
-                        windDirection.set(Integer.toString(todayWeather.wind.deg));
+                        try {
+                            windDirection.set(StringHelper.GetWindDirectionName(todayWeather.wind.deg));
+                        } catch (Exception e) {
+                            Log.wtf("WeatherViewModel", e);
+                            windDirection.set(R.string.wind_direction);
+                        }
                         windSpeed.set(todayWeather.wind.speed);
                     }
                 }
@@ -113,7 +119,12 @@ public class WeatherViewModel extends ViewModel {
                         dayWeather.pressure = item.pressure;
                         dayWeather.humidity = item.humidity;
 
-                        dayWeather.windDirection = Integer.toString(item.deg);
+                        try {
+                            dayWeather.windDirection = StringHelper.GetWindDirectionName(item.deg);
+                        } catch (Exception e) {
+                            Log.wtf("WeatherViewModel", e);
+                            dayWeather.windDirection = R.string.wind_direction;
+                        }
                         dayWeather.windSpeed = item.speed;
 
                         result.add(dayWeather);
