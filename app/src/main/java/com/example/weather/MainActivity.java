@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .setContentView(this, R.layout.activity_main);
         WeatherViewModelFactory factory = App.getComponent().getWeatherViewModelFactory();
         WeatherViewModel weather = ViewModelProviders.of(this, factory).get(WeatherViewModel.class);
+        weather.setContext(this);
         binding.setWeather(weather);
 
         RecyclerView weatherRecycler = findViewById(R.id.weather_recycler);

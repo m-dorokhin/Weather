@@ -1,7 +1,10 @@
 package com.example.weather;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
@@ -9,6 +12,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.weather.DetailedDayWeather.DetailedDayWeatherActivity;
 import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;
@@ -28,7 +32,10 @@ public class WeatherViewModel extends ViewModel {
 
     private OpenweathermapApi api;
     private String apiKey = "21a8d636ae57d56ec6fb2ebb46d3e0b4";
+
     private int cityId = 484646;
+
+    private Context context;
 
     public final ObservableField<String> city = new ObservableField<>("Select city");
     public final ObservableDouble temp = new ObservableDouble();
@@ -41,15 +48,33 @@ public class WeatherViewModel extends ViewModel {
 
     private final MutableLiveData<List<DayWeather>> sixteenDayWeathers = new MutableLiveData<>();
 
-    public WeatherViewModel(OpenweathermapApi api)
-    {
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public Date getDate() {
+        return new Date();
+    }
+
+    public LiveData<List<DayWeather>> getSixteenDayWeathers() {
+        return sixteenDayWeathers;
+    }
+
+    public WeatherViewModel(OpenweathermapApi api) {
         this.api = api;
 
         GetWeather(this.cityId);
     }
 
-    public LiveData<List<DayWeather>> getSixteenDayWeathers() {
-        return sixteenDayWeathers;
+    public void GotoDetailedDayWeather(int cityId, @NonNull Date date) {
+         Intent intent = new Intent(context, DetailedDayWeatherActivity.class);
+         intent.putExtra(DetailedDayWeatherActivity.EXTRA_CITY_ID, cityId);
+         intent.putExtra(DetailedDayWeatherActivity.EXTRA_DATE, date.getTime());
+         context.startActivity(intent);
     }
 
     /**
