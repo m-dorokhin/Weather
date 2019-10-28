@@ -16,6 +16,6 @@ public class DayWeather {
     public int weatherIcon = R.drawable.d_01_clear_sky;
 
     public String getFormatedDate() {
-        return new SimpleDateFormat("E yyyy.MM.dd").format(this.date);
+        return new SimpleDateFormat("E yyyy.MM.dd H").format(this.date);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.weather.configurations;
 
+import com.example.weather.DetailedDayWeather.DetailedDayWeatherViewModelFactory;
 import com.example.weather.WeatherViewModelFactory;
 import com.example.weather.apis.OpenweathermapApi;
 
@@ -23,5 +24,11 @@ public class MainModule {
     @Provides
     public WeatherViewModelFactory getWeatherViewModelFactory(OpenweathermapApi api) {
         return new WeatherViewModelFactory(api);
+    }
+
+    @Provides
+    public DetailedDayWeatherViewModelFactory getDetailedDayWeatherViewModelFactory(
+            OpenweathermapApi api){
+        return new DetailedDayWeatherViewModelFactory(api);
     }
 }
