@@ -21,7 +21,7 @@ public class SixteenDaysWeather {
     }
 
     public static class ListItem {
-        public int dt;
+        public long dt;
         public int sunrise;
         public int sunset;
         public Temp temp;
