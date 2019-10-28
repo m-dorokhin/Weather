@@ -102,7 +102,14 @@ public class WeatherViewModel extends ViewModel {
 
                 List<DayWeather> result = new LinkedList<>();
                 if (daysWeathers != null && daysWeathers.list != null && !daysWeathers.list.isEmpty()) {
+                    boolean first = true;
                     for (SixteenDaysWeather.ListItem item : daysWeathers.list) {
+                        // Пропускаем первый элемент
+                        if (first){
+                            first = false;
+                            continue;
+                        }
+
                         DayWeather dayWeather = new DayWeather();
 
                         dayWeather.date= new Date(item.dt * 1000);
