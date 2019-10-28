@@ -18,6 +18,8 @@ import com.example.weather.configurations.App;
 import com.example.weather.models.DayWeather;
 
 import java.io.IOException;
+import java.security.Timestamp;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -108,6 +110,9 @@ public class WeatherViewModel extends ViewModel {
                 if (daysWeathers != null && daysWeathers.list != null && !daysWeathers.list.isEmpty()) {
                     for (SixteenDaysWeather.ListItem item : daysWeathers.list) {
                         DayWeather dayWeather = new DayWeather();
+
+                        dayWeather.date= new Date(item.dt * 1000);
+
                         if (item.temp != null)
                             dayWeather.temp = item.temp.day - 273;
 

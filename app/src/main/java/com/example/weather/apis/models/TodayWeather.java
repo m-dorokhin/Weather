@@ -6,19 +6,19 @@ import java.util.List;
 
 public class TodayWeather {
 
-    public class Coord {
+    public static class Coord {
         public double lon;
         public double lat;
     }
 
-    public class Weather {
+    public static class Weather {
         public int id;
         public String main;
         public String description;
         public String icon;
     }
 
-    public class Main {
+    public static class Main {
         public double temp;
         public double pressure;
         public double humidity;
@@ -28,16 +28,16 @@ public class TodayWeather {
         public int grnd_level;
     }
 
-    public class Wind {
+    public static class Wind {
         public double speed;
         public int deg;
     }
 
-    public class Clouds {
+    public static class Clouds {
         public int all;
     }
 
-    public class Sys {
+    public static class Sys {
         public int type;
         public int id;
         public double message;
@@ -47,7 +47,6 @@ public class TodayWeather {
     }
 
     public Coord coord;
-    @JsonIgnore
     public List<Weather> weather;
     public String base;
     public Main main;

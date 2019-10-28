@@ -9,7 +9,6 @@ public class SixteenDaysWeather {
     public static class City {
         public int id;
         public String name;
-        @JsonIgnore
         public Coord coord;
         public String country;
         public int population;

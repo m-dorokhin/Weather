@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/date"
-            android:text="@string/today"
+            android:text='@{weather.getFormatedDate(), default=@string/today}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
