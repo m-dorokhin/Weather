@@ -1,8 +1,16 @@
 package com.example.weather.configurations;
 
+import android.content.Context;
+
+import androidx.room.Room;
+
 import com.example.weather.DetailedDayWeather.DetailedDayWeatherViewModelFactory;
 import com.example.weather.WeatherViewModelFactory;
 import com.example.weather.apis.OpenweathermapApi;
+import com.example.weather.data.local.AppDatabase;
+import com.example.weather.data.local.CitiesDao;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -30,5 +38,18 @@ public class MainModule {
     public DetailedDayWeatherViewModelFactory getDetailedDayWeatherViewModelFactory(
             OpenweathermapApi api){
         return new DetailedDayWeatherViewModelFactory(api);
+    }
+
+    @Provides
+    @Singleton
+    public AppDatabase getAppDatabase(Context context) {
+        return Room.databaseBuilder(context,
+                AppDatabase.class, "data.sqlite").build();
+    }
+
+    @Provides
+    @Singleton
+    public CitiesDao getCitiesDao(AppDatabase database) {
+        return database.citiesDao();
     }
 }
