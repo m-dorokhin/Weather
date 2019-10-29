@@ -71,6 +71,7 @@ public class WeatherViewModel extends ViewModel {
     }
 
     public void GotoDetailedDayWeather(int cityId, @NonNull Date date) {
+        Log.i("WeatherViewModel", "Goto detailed day weather. CityId: " + cityId + " Date: " + date);
          Intent intent = new Intent(context, DetailedDayWeatherActivity.class);
          intent.putExtra(DetailedDayWeatherActivity.EXTRA_CITY_ID, cityId);
          intent.putExtra(DetailedDayWeatherActivity.EXTRA_DATE, date.getTime());
@@ -137,6 +138,14 @@ public class WeatherViewModel extends ViewModel {
 
                         DayWeather dayWeather = new DayWeather();
 
+
+                        dayWeather.setCityId(getCityId());
+                        dayWeather.setGotoDetailedDayWeather(new DayWeather.Action<Integer, Date>() {
+                            @Override
+                            public void execute(Integer v1, Date v2) {
+                                GotoDetailedDayWeather(v1, v2);
+                            }
+                        });
                         dayWeather.date= new Date(item.dt * 1000);
 
                         if (item.temp != null)

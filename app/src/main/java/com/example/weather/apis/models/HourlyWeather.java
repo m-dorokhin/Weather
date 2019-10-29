@@ -26,6 +26,7 @@ public class HourlyWeather {
         public List<Weather> weather;
         public Clouds clouds;
         public Wind wind;
+        public Rain rain;
         public Snow snow;
         public Sys sys;
         public String dt_txt;
@@ -56,6 +57,11 @@ public class HourlyWeather {
     public static class Wind {
         public int deg;
         public double speed;
+    }
+
+    public static class Rain {
+        @JsonAlias("3h")
+        public double three_h;
     }
 
     public static class Snow {
