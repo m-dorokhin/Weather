@@ -56,6 +56,11 @@ public class WeatherViewModel extends ViewModel {
         this.context = context;
     }
 
+    public void setCityId(long id) {
+        cityId = (int) id;
+        GetWeather(cityId);
+    }
+
     public int getCityId() {
         return cityId;
     }
@@ -91,6 +96,9 @@ public class WeatherViewModel extends ViewModel {
      * @param cityId Идентификатор города
      */
     private void GetWeather(int cityId) {
+        if (cityId == 0)
+            return;
+
         api.getTodayWeather(cityId, this.apiKey).enqueue(new Callback<TodayWeather>() {
             @Override
             public void onResponse(Call<TodayWeather> call, Response<TodayWeather> response) {

@@ -1,17 +1,16 @@
 package com.example.weather;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 
@@ -21,10 +20,7 @@ import com.example.weather.databinding.ActivityMainBinding;
 import com.example.weather.models.DayWeather;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,8 +56,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 City city = (City) adapterView.getItemAtPosition(position);
+                weather.setCityId(city.id);
 
-                // Загрузить погоду для выбранного города
+                // Скроем экранную клавиатуру
+                InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(adapterView.getApplicationWindowToken(), 0);
+
+                // Очищаем фокус
+                adapterView.clearFocus();
+                view.clearFocus();
             }
         });
     }
