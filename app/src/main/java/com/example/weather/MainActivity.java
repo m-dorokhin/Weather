@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 City city = (City) adapterView.getItemAtPosition(position);
+                cityTitle.setText(city.name);
                 weather.setCityId(city.id);
 
                 // Скроем экранную клавиатуру
@@ -63,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 in.hideSoftInputFromWindow(adapterView.getApplicationWindowToken(), 0);
 
                 // Очищаем фокус
-                adapterView.clearFocus();
-                view.clearFocus();
+                cityTitle.clearFocus();
             }
         });
     }
