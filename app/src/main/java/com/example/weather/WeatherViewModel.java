@@ -20,6 +20,7 @@ import com.example.weather.helpers.IconHelper;
 import com.example.weather.helpers.StringHelper;
 import com.example.weather.models.DayWeather;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +38,10 @@ public class WeatherViewModel extends ViewModel {
 
     private Context context;
 
-    public final ObservableField<String> city = new ObservableField<>("Select city");
+    private Date date = new Date();
+
+    public final ObservableField<String> city = new ObservableField<>("");
+    public final ObservableField<String> textDate = new ObservableField<>("");
     public final ObservableDouble temp = new ObservableDouble();
     public final ObservableField<String> weather = new ObservableField<>("Weather");
     public final ObservableDouble pressure = new ObservableDouble();
@@ -57,7 +61,11 @@ public class WeatherViewModel extends ViewModel {
     }
 
     public Date getDate() {
-        return new Date();
+        return date;
+    }
+
+    public String printDate() {
+        return new SimpleDateFormat("E yyyy.MM.dd").format(this.date);
     }
 
     public LiveData<List<DayWeather>> getSixteenDayWeathers() {
