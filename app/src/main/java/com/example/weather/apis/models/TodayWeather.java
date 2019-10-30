@@ -1,5 +1,6 @@
 package com.example.weather.apis.models;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
@@ -33,6 +34,16 @@ public class TodayWeather {
         public int deg;
     }
 
+    public static class Rain {
+        @JsonAlias("3h")
+        public double three_h;
+    }
+
+    public static class Snow {
+        @JsonAlias("3h")
+        public double three_h;
+    }
+
     public static class Clouds {
         public int all;
     }
@@ -52,6 +63,8 @@ public class TodayWeather {
     public Main main;
     public int visibility;
     public Wind wind;
+    public Rain rain;
+    public Snow snow;
     public Clouds clouds;
     public int dt;
     public Sys sys;
