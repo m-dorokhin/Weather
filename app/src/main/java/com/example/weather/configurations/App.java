@@ -7,7 +7,7 @@ public class App extends Application {
 
     public App() {
         super();
-        component = DaggerAppComponent.create();
+        component = AppComponent.build(this);
     }
 
     public static AppComponent getComponent() {

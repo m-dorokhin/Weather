@@ -22,7 +22,7 @@
         android:padding="16dp"
         android:onClick="@{(view) -> weather.GotoDetailedDayWeather(weather.getCityId(), weather.getDate())}">
 
-        <Button
+        <AutoCompleteTextView
             android:id="@+id/city"
             android:text="@{weather.city, default=@string/city}"
             android:layout_centerHorizontal="true"

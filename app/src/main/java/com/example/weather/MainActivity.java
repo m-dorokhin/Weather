@@ -11,8 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 
 import com.example.weather.configurations.App;
+import com.example.weather.data.local.City;
 import com.example.weather.databinding.ActivityMainBinding;
 import com.example.weather.models.DayWeather;
 
@@ -48,5 +52,17 @@ public class MainActivity extends AppCompatActivity {
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         weatherRecycler.setLayoutManager(layoutManager);
+
+        AutoCompleteTextView cityTitle = (AutoCompleteTextView) findViewById(R.id.city);
+        cityTitle.setThreshold(4);
+        cityTitle.setAdapter(new CitiesAdapter(this, App.getComponent().getCitesDao()));
+        cityTitle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                City city = (City) adapterView.getItemAtPosition(position);
+
+                // Загрузить погоду для выбранного города
+            }
+        });
     }
 }

@@ -9,6 +9,7 @@ import com.example.weather.WeatherViewModelFactory;
 import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.data.local.AppDatabase;
 import com.example.weather.data.local.CitiesDao;
+import com.example.weather.data.local.FillDataIntoDb;
 
 import javax.inject.Singleton;
 
@@ -41,10 +42,17 @@ public class MainModule {
     }
 
     @Provides
+    public FillDataIntoDb getFillDataIntoDb(App application, Context context) {
+        return new FillDataIntoDb(application, context);
+    }
+
+    @Provides
     @Singleton
-    public AppDatabase getAppDatabase(Context context) {
+    public AppDatabase getAppDatabase(Context context, FillDataIntoDb fillDataIntoDb) {
         return Room.databaseBuilder(context,
-                AppDatabase.class, "data.sqlite").build();
+                AppDatabase.class, "database")
+                .addCallback(fillDataIntoDb)
+                .build();
     }
 
     @Provides
