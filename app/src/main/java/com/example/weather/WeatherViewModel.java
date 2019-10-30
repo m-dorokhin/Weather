@@ -210,6 +210,7 @@ public class WeatherViewModel extends ViewModel {
     }
 
     private void LoadSettings() {
+        Log.i("WeatherViewModel", "Load settings");
         SettingsDao dao = this.database.settingsDao();
         Settings settings = dao.get();
         if (settings == null) {
@@ -219,9 +220,16 @@ public class WeatherViewModel extends ViewModel {
             dao.insert(settings);
         }
         this.cityId = settings.selectCity;
+
+        if (this.cityId != 0) {
+            CitiesDao citiesDao = this.database.citiesDao();
+            City city = citiesDao.getCity(this.cityId);
+            this.city.set(city.name);
+        }
     }
     
     private void SaveSettings() {
+        Log.i("WeatherViewModel", "Save settings");
         SettingsDao dao = this.database.settingsDao();
         Settings settings = dao.get();
         if (settings == null) {

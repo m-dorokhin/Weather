@@ -12,8 +12,11 @@ public abstract class CitiesDao {
     @Insert
     public abstract void insertCities(List<City> cities);
 
+    @Query("SELECT * FROM cities WHERE id = :id")
+    public abstract City getCity(long id);
+
     @Query("SELECT * FROM cities WHERE name LIKE :nameLike ORDER BY weight DESC, country_weight DESC, instr(lower(name), lower(:name)) ASC;")
-    public abstract List<City> getCities(String nameLike, String name);
+    public abstract List<City> searchCities(String nameLike, String name);
 
     @Query("UPDATE cities SET weight = weight + 1 WHERE id = :id;")
     public abstract void updateWeight(long id);

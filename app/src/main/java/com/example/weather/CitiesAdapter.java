@@ -90,6 +90,6 @@ public class CitiesAdapter extends BaseAdapter implements Filterable {
      * Returns a search result for the given book title.
      */
     private List<City> findCities(String bookTitle) {
-        return citiesDao.getCities("%" + bookTitle + "%", bookTitle);
+        return citiesDao.searchCities("%" + bookTitle + "%", bookTitle);
     }
 }
