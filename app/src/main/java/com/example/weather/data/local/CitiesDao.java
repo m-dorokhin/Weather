@@ -22,7 +22,7 @@ public abstract class CitiesDao {
     public abstract void updateCountryWeight(String country);
 
     @Transaction
-    void updateCities(City city) {
+    public void updateCities(City city) {
         updateWeight(city.id);
         updateCountryWeight(city.country);
     }

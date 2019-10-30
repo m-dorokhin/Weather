@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 City city = (City) adapterView.getItemAtPosition(position);
                 cityTitle.setText(city.name);
                 weather.setCityId(city.id);
+                weather.updateCityWeight(city);
 
                 // Скроем экранную клавиатуру
                 InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

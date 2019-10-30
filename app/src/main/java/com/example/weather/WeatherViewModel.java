@@ -17,6 +17,8 @@ import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;
 import com.example.weather.data.local.AppDatabase;
+import com.example.weather.data.local.CitiesDao;
+import com.example.weather.data.local.City;
 import com.example.weather.data.local.Settings;
 import com.example.weather.data.local.SettingsDao;
 import com.example.weather.helpers.IconHelper;
@@ -231,5 +233,10 @@ public class WeatherViewModel extends ViewModel {
             settings.selectCity = this.cityId;
             dao.update(settings);
         }
+    }
+
+    public void updateCityWeight(City city) {
+        CitiesDao dao = this.database.citiesDao();
+        dao.updateCities(city);
     }
 }
