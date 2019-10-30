@@ -16,6 +16,9 @@ import com.example.weather.DetailedDayWeather.DetailedDayWeatherActivity;
 import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;
+import com.example.weather.data.local.AppDatabase;
+import com.example.weather.data.local.Settings;
+import com.example.weather.data.local.SettingsDao;
 import com.example.weather.helpers.IconHelper;
 import com.example.weather.helpers.StringHelper;
 import com.example.weather.models.DayWeather;
@@ -32,9 +35,10 @@ import retrofit2.Response;
 public class WeatherViewModel extends ViewModel {
 
     private OpenweathermapApi api;
+    private AppDatabase database;
     private String apiKey = "21a8d636ae57d56ec6fb2ebb46d3e0b4";
 
-    private int cityId = 484646;
+    private int cityId = 0;
 
     private Context context;
 
@@ -59,6 +63,7 @@ public class WeatherViewModel extends ViewModel {
     public void setCityId(long id) {
         cityId = (int) id;
         GetWeather(cityId);
+        SaveSettings();
     }
 
     public int getCityId() {
@@ -77,9 +82,11 @@ public class WeatherViewModel extends ViewModel {
         return sixteenDayWeathers;
     }
 
-    public WeatherViewModel(OpenweathermapApi api) {
+    public WeatherViewModel(@NonNull OpenweathermapApi api, @NonNull AppDatabase database) {
         this.api = api;
+        this.database = database;
 
+        LoadSettings();
         GetWeather(this.cityId);
     }
 
@@ -198,5 +205,31 @@ public class WeatherViewModel extends ViewModel {
                 Log.w("WeatherViewModel", "Call api trouble", t);
             }
         });
+    }
+
+    private void LoadSettings() {
+        SettingsDao dao = this.database.settingsDao();
+        Settings settings = dao.get();
+        if (settings == null) {
+            settings = new Settings();
+            settings.id = 0;
+            settings.selectCity = this.cityId;
+            dao.insert(settings);
+        }
+        this.cityId = settings.selectCity;
+    }
+    
+    private void SaveSettings() {
+        SettingsDao dao = this.database.settingsDao();
+        Settings settings = dao.get();
+        if (settings == null) {
+            settings = new Settings();
+            settings.id = 0;
+            settings.selectCity = this.cityId;
+            dao.insert(settings);
+        } else {
+            settings.selectCity = this.cityId;
+            dao.update(settings);
+        }
     }
 }

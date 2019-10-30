@@ -31,8 +31,9 @@ public class MainModule {
     }
 
     @Provides
-    public WeatherViewModelFactory getWeatherViewModelFactory(OpenweathermapApi api) {
-        return new WeatherViewModelFactory(api);
+    public WeatherViewModelFactory getWeatherViewModelFactory(
+            OpenweathermapApi api, AppDatabase database) {
+        return new WeatherViewModelFactory(api, database);
     }
 
     @Provides
@@ -52,6 +53,7 @@ public class MainModule {
         return Room.databaseBuilder(context,
                 AppDatabase.class, "database")
                 .addCallback(fillDataIntoDb)
+                .allowMainThreadQueries() // TODO: Добавить работу с базой в отдельном потоке
                 .build();
     }
 

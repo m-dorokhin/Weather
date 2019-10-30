@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName="cities")
+@Entity(tableName = "cities")
 public class City {
     @PrimaryKey
     public long id;
