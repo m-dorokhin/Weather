@@ -73,7 +73,7 @@ public class WeatherViewModel extends ViewModel {
     }
 
     public Date getDate() {
-        return date;
+        return this.date;
     }
 
     public String printDate() {
@@ -116,7 +116,7 @@ public class WeatherViewModel extends ViewModel {
                 if (todayWeather != null) {
                     city.set(todayWeather.name);
 
-                    date = new Date(todayWeather.dt);
+                    date = new Date(todayWeather.dt * 1000);
                     textDate.set(printDate());
 
                     if (todayWeather.weather != null && !todayWeather.weather.isEmpty()) {

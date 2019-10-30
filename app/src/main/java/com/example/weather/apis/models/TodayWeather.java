@@ -66,7 +66,7 @@ public class TodayWeather {
     public Rain rain;
     public Snow snow;
     public Clouds clouds;
-    public int dt;
+    public long dt;
     public Sys sys;
     public int timezone;
     public int id;
