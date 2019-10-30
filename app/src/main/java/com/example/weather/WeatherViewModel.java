@@ -107,6 +107,9 @@ public class WeatherViewModel extends ViewModel {
                 if (todayWeather != null) {
                     city.set(todayWeather.name);
 
+                    date = new Date(todayWeather.dt);
+                    textDate.set(printDate());
+
                     if (todayWeather.weather != null && !todayWeather.weather.isEmpty()) {
                         TodayWeather.Weather weatherStatus = todayWeather.weather.get(0);
                         weather.set(weatherStatus.main);
