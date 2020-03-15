@@ -27,6 +27,7 @@ public class TodayWeather {
         public double temp_max;
         public int sea_level;
         public int grnd_level;
+        public double feels_like;
     }
 
     public static class Wind {

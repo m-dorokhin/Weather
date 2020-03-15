@@ -33,6 +33,14 @@ public class SixteenDaysWeather {
         public int clouds;
         public double rain;
         public double snow;
+        public FeelsLike feels_like;
+    }
+
+    public static class FeelsLike {
+        public double day;
+        public double night;
+        public double eve;
+        public double morn;
     }
 
     public static class Temp {

@@ -41,6 +41,7 @@ public class HourlyWeather {
         public double grnd_level;
         public int humidity;
         public double temp_kf;
+        public double feels_like;
     }
 
     public static class Weather {
