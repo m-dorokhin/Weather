@@ -1,4 +1,4 @@
-package com.example.weather.DetailedDayWeather;
+package com.example.weather.weather_by_day;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

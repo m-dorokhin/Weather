@@ -7,6 +7,6 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     android:background="@color/colorBackground"
-    tools:context=".DetailedDayWeather.DetailedDayWeatherActivity">
+    tools:context=".weather_by_day.DetailedDayWeatherActivity">
 
 </androidx.recyclerview.widget.RecyclerView>

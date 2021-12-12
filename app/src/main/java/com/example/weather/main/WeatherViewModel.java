@@ -12,7 +12,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.weather.DetailedDayWeather.DetailedDayWeatherActivity;
+import com.example.weather.weather_by_day.DetailedDayWeatherActivity;
 import com.example.weather.R;
 import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.common.apis.models.SixteenDaysWeather;

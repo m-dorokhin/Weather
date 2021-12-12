@@ -1,4 +1,4 @@
-package com.example.weather.DetailedDayWeather;
+package com.example.weather.weather_by_day;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

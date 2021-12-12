@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.example.weather.DetailedDayWeather.DetailedDayWeatherViewModelFactory;
+import com.example.weather.weather_by_day.DetailedDayWeatherViewModelFactory;
 import com.example.weather.main.WeatherViewModel;
 import com.example.weather.main.WeatherViewModelFactory;
 import com.example.weather.common.apis.OpenweathermapApi;
