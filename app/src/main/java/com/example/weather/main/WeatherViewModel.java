@@ -22,8 +22,8 @@ import com.example.weather.main.data.local.CitiesDao;
 import com.example.weather.main.data.local.City;
 import com.example.weather.main.data.local.Settings;
 import com.example.weather.main.data.local.SettingsDao;
-import com.example.weather.helpers.IconHelper;
-import com.example.weather.helpers.StringHelper;
+import com.example.weather.common.helpers.IconHelper;
+import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
 
 import java.text.SimpleDateFormat;

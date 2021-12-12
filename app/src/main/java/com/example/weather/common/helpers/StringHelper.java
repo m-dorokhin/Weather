@@ -1,4 +1,4 @@
-package com.example.weather.helpers;
+package com.example.weather.common.helpers;
 
 import com.example.weather.R;
 

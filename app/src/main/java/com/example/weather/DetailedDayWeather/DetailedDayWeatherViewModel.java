@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.weather.R;
 import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.common.apis.models.HourlyWeather;
-import com.example.weather.helpers.IconHelper;
-import com.example.weather.helpers.StringHelper;
+import com.example.weather.common.helpers.IconHelper;
+import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
 
 import java.util.Calendar;
