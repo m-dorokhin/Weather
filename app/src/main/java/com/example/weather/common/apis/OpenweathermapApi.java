@@ -1,8 +1,8 @@
-package com.example.weather.apis;
+package com.example.weather.common.apis;
 
-import com.example.weather.apis.models.HourlyWeather;
-import com.example.weather.apis.models.SixteenDaysWeather;
-import com.example.weather.apis.models.TodayWeather;
+import com.example.weather.common.apis.models.HourlyWeather;
+import com.example.weather.common.apis.models.SixteenDaysWeather;
+import com.example.weather.common.apis.models.TodayWeather;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

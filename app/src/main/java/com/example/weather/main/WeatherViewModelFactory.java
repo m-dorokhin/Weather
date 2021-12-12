@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.weather.apis.OpenweathermapApi;
+import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.main.data.local.AppDatabase;
 
 public class WeatherViewModelFactory extends ViewModelProvider.NewInstanceFactory {

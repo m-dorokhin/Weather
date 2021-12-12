@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.weather.R;
-import com.example.weather.apis.OpenweathermapApi;
-import com.example.weather.apis.models.HourlyWeather;
+import com.example.weather.common.apis.OpenweathermapApi;
+import com.example.weather.common.apis.models.HourlyWeather;
 import com.example.weather.helpers.IconHelper;
 import com.example.weather.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;

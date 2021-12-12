@@ -14,9 +14,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.weather.DetailedDayWeather.DetailedDayWeatherActivity;
 import com.example.weather.R;
-import com.example.weather.apis.OpenweathermapApi;
-import com.example.weather.apis.models.SixteenDaysWeather;
-import com.example.weather.apis.models.TodayWeather;
+import com.example.weather.common.apis.OpenweathermapApi;
+import com.example.weather.common.apis.models.SixteenDaysWeather;
+import com.example.weather.common.apis.models.TodayWeather;
 import com.example.weather.main.data.local.AppDatabase;
 import com.example.weather.main.data.local.CitiesDao;
 import com.example.weather.main.data.local.City;

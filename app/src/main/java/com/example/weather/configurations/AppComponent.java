@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.weather.DetailedDayWeather.DetailedDayWeatherViewModelFactory;
 import com.example.weather.main.WeatherViewModel;
 import com.example.weather.main.WeatherViewModelFactory;
-import com.example.weather.apis.OpenweathermapApi;
+import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.main.data.local.CitiesDao;
 
 import javax.inject.Singleton;

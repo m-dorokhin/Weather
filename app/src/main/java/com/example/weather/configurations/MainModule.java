@@ -6,7 +6,7 @@ import androidx.room.Room;
 
 import com.example.weather.DetailedDayWeather.DetailedDayWeatherViewModelFactory;
 import com.example.weather.main.WeatherViewModelFactory;
-import com.example.weather.apis.OpenweathermapApi;
+import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.main.data.local.AppDatabase;
 import com.example.weather.main.data.local.CitiesDao;
 import com.example.weather.main.data.local.FillDataIntoDb;

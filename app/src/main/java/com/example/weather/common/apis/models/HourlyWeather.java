@@ -1,4 +1,4 @@
-package com.example.weather.apis.models;
+package com.example.weather.common.apis.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
