@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.weather.configurations.App;
+import com.example.weather.common.configurations.App;
 
 import java.io.DataInputStream;
 import java.io.IOException;

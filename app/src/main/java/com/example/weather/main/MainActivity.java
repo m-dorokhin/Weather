@@ -16,7 +16,7 @@ import android.widget.AutoCompleteTextView;
 
 import com.example.weather.*;
 import com.example.weather.common.WeatherByDayAdapter;
-import com.example.weather.configurations.App;
+import com.example.weather.common.configurations.App;
 import com.example.weather.main.data.local.City;
 import com.example.weather.databinding.ActivityMainBinding;
 import com.example.weather.common.models.DayWeather;

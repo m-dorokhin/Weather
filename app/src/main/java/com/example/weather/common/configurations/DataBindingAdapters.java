@@ -1,4 +1,4 @@
-package com.example.weather.configurations;
+package com.example.weather.common.configurations;
 
 import android.widget.ImageView;
 
