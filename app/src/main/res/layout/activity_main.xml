@@ -7,7 +7,7 @@
 
         <variable
             name="weather"
-            type="com.example.weather.WeatherViewModel" />
+            type="com.example.weather.main.WeatherViewModel" />
 
     </data>
 <LinearLayout

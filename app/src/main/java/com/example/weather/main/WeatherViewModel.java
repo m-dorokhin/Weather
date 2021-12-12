@@ -1,4 +1,4 @@
-package com.example.weather;
+package com.example.weather.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.weather.DetailedDayWeather.DetailedDayWeatherActivity;
+import com.example.weather.R;
 import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.SixteenDaysWeather;
 import com.example.weather.apis.models.TodayWeather;

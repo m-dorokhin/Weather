@@ -1,4 +1,4 @@
-package com.example.weather;
+package com.example.weather.main;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
