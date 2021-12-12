@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.weather.apis.OpenweathermapApi;
-import com.example.weather.data.local.AppDatabase;
+import com.example.weather.main.data.local.AppDatabase;
 
 public class WeatherViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private OpenweathermapApi api;

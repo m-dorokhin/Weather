@@ -9,8 +9,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.example.weather.data.local.CitiesDao;
-import com.example.weather.data.local.City;
+import com.example.weather.main.data.local.CitiesDao;
+import com.example.weather.main.data.local.City;
 
 import java.util.ArrayList;
 import java.util.List;

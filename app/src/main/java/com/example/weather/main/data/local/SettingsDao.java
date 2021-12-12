@@ -1,4 +1,4 @@
-package com.example.weather.data.local;
+package com.example.weather.main.data.local;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
