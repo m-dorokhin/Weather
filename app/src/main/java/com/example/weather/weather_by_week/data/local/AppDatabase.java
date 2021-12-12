@@ -1,4 +1,4 @@
-package com.example.weather.main.data.local;
+package com.example.weather.weather_by_week.data.local;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

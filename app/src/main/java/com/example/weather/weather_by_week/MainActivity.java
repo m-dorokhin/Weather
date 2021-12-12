@@ -1,4 +1,4 @@
-package com.example.weather.main;
+package com.example.weather.weather_by_week;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -17,7 +17,7 @@ import android.widget.AutoCompleteTextView;
 import com.example.weather.*;
 import com.example.weather.common.WeatherByDayAdapter;
 import com.example.weather.common.configurations.App;
-import com.example.weather.main.data.local.City;
+import com.example.weather.weather_by_week.data.local.City;
 import com.example.weather.databinding.ActivityMainBinding;
 import com.example.weather.common.models.DayWeather;
 

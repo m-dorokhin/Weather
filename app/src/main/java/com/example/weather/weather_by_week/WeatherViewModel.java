@@ -1,4 +1,4 @@
-package com.example.weather.main;
+package com.example.weather.weather_by_week;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,11 +17,11 @@ import com.example.weather.R;
 import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.common.apis.models.SixteenDaysWeather;
 import com.example.weather.common.apis.models.TodayWeather;
-import com.example.weather.main.data.local.AppDatabase;
-import com.example.weather.main.data.local.CitiesDao;
-import com.example.weather.main.data.local.City;
-import com.example.weather.main.data.local.Settings;
-import com.example.weather.main.data.local.SettingsDao;
+import com.example.weather.weather_by_week.data.local.AppDatabase;
+import com.example.weather.weather_by_week.data.local.CitiesDao;
+import com.example.weather.weather_by_week.data.local.City;
+import com.example.weather.weather_by_week.data.local.Settings;
+import com.example.weather.weather_by_week.data.local.SettingsDao;
 import com.example.weather.common.helpers.IconHelper;
 import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;

@@ -7,14 +7,14 @@
 
         <variable
             name="weather"
-            type="com.example.weather.main.WeatherViewModel" />
+            type="com.example.weather.weather_by_week.WeatherViewModel" />
 
     </data>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.MainActivity">
+    tools:context=".weather_by_week.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -5,11 +5,11 @@ import android.content.Context;
 import androidx.room.Room;
 
 import com.example.weather.weather_by_day.DetailedDayWeatherViewModelFactory;
-import com.example.weather.main.WeatherViewModelFactory;
+import com.example.weather.weather_by_week.WeatherViewModelFactory;
 import com.example.weather.common.apis.OpenweathermapApi;
-import com.example.weather.main.data.local.AppDatabase;
-import com.example.weather.main.data.local.CitiesDao;
-import com.example.weather.main.data.local.FillDataIntoDb;
+import com.example.weather.weather_by_week.data.local.AppDatabase;
+import com.example.weather.weather_by_week.data.local.CitiesDao;
+import com.example.weather.weather_by_week.data.local.FillDataIntoDb;
 
 import javax.inject.Singleton;
 

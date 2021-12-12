@@ -1,11 +1,11 @@
-package com.example.weather.main;
+package com.example.weather.weather_by_week;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.weather.common.apis.OpenweathermapApi;
-import com.example.weather.main.data.local.AppDatabase;
+import com.example.weather.weather_by_week.data.local.AppDatabase;
 
 public class WeatherViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private OpenweathermapApi api;
