@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# Don`t keep IDE directory in git
+/.idea/
