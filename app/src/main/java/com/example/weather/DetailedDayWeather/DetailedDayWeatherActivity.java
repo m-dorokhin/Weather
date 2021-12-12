@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
-import com.example.weather.WeatherByDayAdapter;
+import com.example.weather.common.WeatherByDayAdapter;
 import com.example.weather.configurations.App;
 import com.example.weather.models.DayWeather;
 

@@ -1,4 +1,4 @@
-package com.example.weather;
+package com.example.weather.common;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.weather.R;
 import com.example.weather.databinding.WeatherByDayBinding;
 import com.example.weather.models.DayWeather;
 
