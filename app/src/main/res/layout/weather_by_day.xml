@@ -8,7 +8,7 @@
 
         <variable
             name="weather"
-            type="com.example.weather.models.DayWeather" />
+            type="com.example.weather.common.models.DayWeather" />
 
     </data>
 <androidx.cardview.widget.CardView

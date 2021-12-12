@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.weather.R;
 import com.example.weather.common.WeatherByDayAdapter;
 import com.example.weather.configurations.App;
-import com.example.weather.models.DayWeather;
+import com.example.weather.common.models.DayWeather;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

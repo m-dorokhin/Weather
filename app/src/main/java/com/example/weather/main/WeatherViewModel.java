@@ -24,7 +24,7 @@ import com.example.weather.data.local.Settings;
 import com.example.weather.data.local.SettingsDao;
 import com.example.weather.helpers.IconHelper;
 import com.example.weather.helpers.StringHelper;
-import com.example.weather.models.DayWeather;
+import com.example.weather.common.models.DayWeather;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

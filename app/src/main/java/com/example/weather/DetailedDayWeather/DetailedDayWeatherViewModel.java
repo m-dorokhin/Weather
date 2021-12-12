@@ -13,7 +13,7 @@ import com.example.weather.apis.OpenweathermapApi;
 import com.example.weather.apis.models.HourlyWeather;
 import com.example.weather.helpers.IconHelper;
 import com.example.weather.helpers.StringHelper;
-import com.example.weather.models.DayWeather;
+import com.example.weather.common.models.DayWeather;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
 import com.example.weather.databinding.WeatherByDayBinding;
-import com.example.weather.models.DayWeather;
+import com.example.weather.common.models.DayWeather;
 
 import java.util.List;
 

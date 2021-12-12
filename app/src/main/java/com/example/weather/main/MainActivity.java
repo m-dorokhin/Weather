@@ -19,7 +19,7 @@ import com.example.weather.common.WeatherByDayAdapter;
 import com.example.weather.configurations.App;
 import com.example.weather.data.local.City;
 import com.example.weather.databinding.ActivityMainBinding;
-import com.example.weather.models.DayWeather;
+import com.example.weather.common.models.DayWeather;
 
 import java.util.ArrayList;
 import java.util.List;
