@@ -12,6 +12,7 @@ import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
 import com.example.weather.common.configurations.App
 import com.example.weather.databinding.FragmentWeatherByWeekBinding
+import com.example.weather.weather_by_day.WeatherByDayFragment
 import com.example.weather.weather_by_week.data.local.City
 
 class WeatherByWeekFragment : Fragment() {
@@ -28,7 +29,14 @@ class WeatherByWeekFragment : Fragment() {
 
         val adapter = WeatherByDayAdapter(ArrayList())
         binding.weatherRecycler.adapter = adapter
-        weather.sixteenDayWeathers.observe(this) { dayWeathers -> adapter.setItems(dayWeathers) }
+        weather.sixteenDayWeathers.observe(this) { dayWeathers ->
+            dayWeathers.forEach {
+                it.setGotoDetailedDayWeather { cityId, date ->
+                    gotoWeatherByDay(cityId, date.time)
+                }
+            }
+            adapter.setItems(dayWeathers)
+        }
         binding.weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
 
         binding.city.threshold = 4
@@ -47,5 +55,13 @@ class WeatherByWeekFragment : Fragment() {
             // Очищаем фокус
             binding.city.clearFocus()
         }
+    }
+
+    private fun gotoWeatherByDay(cityId: Int, date: Long) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, WeatherByDayFragment.createWeatherByDayFragment(cityId, date))
+            .setReorderingAllowed(true)
+            .addToBackStack(null)
+            .commit()
     }
 }

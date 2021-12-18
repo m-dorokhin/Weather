@@ -3,7 +3,6 @@ package com.example.weather.weather_by_week;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
@@ -11,29 +10,23 @@ import androidx.databinding.ObservableInt;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.example.weather.weather_by_day.DetailedDayWeatherActivity;
 import com.example.weather.R;
 import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.common.apis.models.SixteenDaysWeather;
 import com.example.weather.common.apis.models.TodayWeather;
-import com.example.weather.weather_by_week.data.local.AppDatabase;
-import com.example.weather.weather_by_week.data.local.CitiesDao;
-import com.example.weather.weather_by_week.data.local.City;
-import com.example.weather.weather_by_week.data.local.Settings;
-import com.example.weather.weather_by_week.data.local.SettingsDao;
 import com.example.weather.common.helpers.IconHelper;
 import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
+import com.example.weather.weather_by_day.DetailedDayWeatherActivity;
+import com.example.weather.weather_by_week.data.local.*;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class WeatherViewModel extends ViewModel {
 
@@ -169,12 +162,6 @@ public class WeatherViewModel extends ViewModel {
 
 
                         dayWeather.setCityId(getCityId());
-                        dayWeather.setGotoDetailedDayWeather(new DayWeather.Action<Integer, Date>() {
-                            @Override
-                            public void execute(Integer v1, Date v2) {
-                                GotoDetailedDayWeather(v1, v2);
-                            }
-                        });
                         dayWeather.date= new Date(item.dt * 1000);
 
                         if (item.temp != null)
