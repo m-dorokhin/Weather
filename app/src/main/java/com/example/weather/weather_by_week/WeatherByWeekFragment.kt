@@ -19,11 +19,8 @@ class WeatherByWeekFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: FragmentWeatherByWeekBinding =
-            DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_weather_by_week)
-
         val weather = createViewModel()
-        binding.weather = weather
+        val binding: FragmentWeatherByWeekBinding = createBinding(weather)
 
         setupWeatherRecycler(binding, weather)
         setupCity(binding, weather)
@@ -36,6 +33,13 @@ class WeatherByWeekFragment : Fragment() {
     private fun createViewModel(): WeatherViewModel {
         val factory = App.getComponent().weatherViewModelFactory
         return ViewModelProvider(this, factory).get(WeatherViewModel::class.java)
+    }
+
+    private fun createBinding(weather: WeatherViewModel): FragmentWeatherByWeekBinding {
+        val binding: FragmentWeatherByWeekBinding =
+            DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_weather_by_week)
+        binding.weather = weather
+        return binding
     }
 
     private fun setupWeatherRecycler(
