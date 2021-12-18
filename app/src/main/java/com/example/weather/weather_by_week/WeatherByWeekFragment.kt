@@ -7,10 +7,10 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
 import com.example.weather.common.configurations.App
+import com.example.weather.common.models.DayWeather
 import com.example.weather.databinding.FragmentWeatherByWeekBinding
 import com.example.weather.weather_by_day.WeatherByDayFragment
 import com.example.weather.weather_by_week.data.local.City
@@ -47,14 +47,16 @@ class WeatherByWeekFragment : Fragment() {
         val adapter = WeatherByDayAdapter(ArrayList())
         weatherRecycler.adapter = adapter
         viewModel.sixteenDayWeathers.observe(this@WeatherByWeekFragment) { dayWeathers ->
-            dayWeathers.forEach {
-                it.setGotoDetailedDayWeather { cityId, date ->
-                    gotoWeatherByDay(cityId, date.time)
-                }
-            }
-            adapter.setItems(dayWeathers)
+            adapter.setItems(dayWeathers.map(::setupCellClickListener))
         }
         return this
+    }
+
+    private fun setupCellClickListener(dayWeather: DayWeather): DayWeather {
+        dayWeather.setGotoDetailedDayWeather { cityId, date ->
+            gotoWeatherByDay(cityId, date.time)
+        }
+        return dayWeather
     }
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {
