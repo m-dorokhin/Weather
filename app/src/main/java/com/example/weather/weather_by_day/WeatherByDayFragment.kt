@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,13 @@ class WeatherByDayFragment private constructor() : Fragment() {
     private val cityId: Int get() = arguments?.getInt(EXTRA_CITY_ID)!!
     private val date: Date get() = Date(arguments?.getLong(EXTRA_DATE)!!)
 
+    private val viewModel: DetailedDayWeatherViewModel by viewModels {
+        App.getComponent().detailedDayWeatherViewModelFactory.apply {
+            setCityId(cityId)
+            setDate(date)
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_weather_by_day, container, false)
 
@@ -33,23 +41,14 @@ class WeatherByDayFragment private constructor() : Fragment() {
         Log.i(TAG, "Load daily weather for cityId: " + cityId + " and date: " +
                 SimpleDateFormat("E yyyy.MM.dd").format(date))
 
-        val weather = createViewModel()
-        setupOnDayRecycler(weather)
+        setupOnDayRecycler()
     }
 
-    private fun createViewModel(): DetailedDayWeatherViewModel {
-        val factory = App.getComponent().detailedDayWeatherViewModelFactory
-        factory.setCityId(cityId)
-        factory.setDate(date)
-        val weather = ViewModelProvider(this, factory).get(DetailedDayWeatherViewModel::class.java)
-        return weather
-    }
-
-    private fun setupOnDayRecycler(weather: DetailedDayWeatherViewModel) {
+    private fun setupOnDayRecycler() {
         val weatherRecycler: RecyclerView = requireView().findViewById(R.id.on_day_recycler)
         val adapter = WeatherByDayAdapter(ArrayList())
         weatherRecycler.adapter = adapter
-        weather.detailedWeathers.observe(viewLifecycleOwner) { dayWeathers -> adapter.setItems(dayWeathers) }
+        viewModel.detailedWeathers.observe(viewLifecycleOwner) { dayWeathers -> adapter.setItems(dayWeathers) }
         weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
