@@ -1,7 +1,6 @@
 package com.example.weather.weather_by_week;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableDouble;
@@ -17,7 +16,6 @@ import com.example.weather.common.apis.models.TodayWeather;
 import com.example.weather.common.helpers.IconHelper;
 import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
-import com.example.weather.weather_by_day.DetailedDayWeatherActivity;
 import com.example.weather.weather_by_week.data.local.*;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,14 +82,6 @@ public class WeatherViewModel extends ViewModel {
 
         LoadSettings();
         GetWeather(this.cityId);
-    }
-
-    public void GotoDetailedDayWeather(int cityId, @NonNull Date date) {
-        Log.i("WeatherViewModel", "Goto detailed day weather. CityId: " + cityId + " Date: " + date);
-         Intent intent = new Intent(context, DetailedDayWeatherActivity.class);
-         intent.putExtra(DetailedDayWeatherActivity.EXTRA_CITY_ID, cityId);
-         intent.putExtra(DetailedDayWeatherActivity.EXTRA_DATE, date.getTime());
-         context.startActivity(intent);
     }
 
     /**
