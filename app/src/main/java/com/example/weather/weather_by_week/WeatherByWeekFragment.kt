@@ -55,6 +55,10 @@ class WeatherByWeekFragment : Fragment() {
             // Очищаем фокус
             binding.city.clearFocus()
         }
+
+        binding.topBar.setOnClickListener {
+            gotoWeatherByDay(weather.cityId, weather.date.time)
+        }
     }
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {

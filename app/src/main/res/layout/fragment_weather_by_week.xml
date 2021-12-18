@@ -17,11 +17,11 @@
             tools:context=".weather_by_week.MainActivity">
 
         <RelativeLayout
+                android:id="@+id/top_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:background="@color/colorTop"
-                android:onClick="@{(view) -> weather.GotoDetailedDayWeather(weather.getCityId(), weather.getDate())}">
+                android:background="@color/colorTop" >
 
             <AutoCompleteTextView
                     android:id="@+id/city"
