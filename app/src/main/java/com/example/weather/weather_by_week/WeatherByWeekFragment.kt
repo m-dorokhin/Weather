@@ -23,11 +23,10 @@ class WeatherByWeekFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: FragmentWeatherByWeekBinding = createBinding()
-
-        binding.setupTopBar()
-        binding.setupWeatherRecycler()
-        binding.setupCity()
+        createBinding()
+            .setupTopBar()
+            .setupWeatherRecycler()
+            .setupCity()
     }
 
     private fun createBinding(): FragmentWeatherByWeekBinding {
