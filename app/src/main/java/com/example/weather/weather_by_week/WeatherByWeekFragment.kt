@@ -6,6 +6,7 @@ import android.widget.AdapterView.OnItemClickListener
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weather.R
@@ -16,20 +17,19 @@ import com.example.weather.weather_by_day.WeatherByDayFragment
 import com.example.weather.weather_by_week.data.local.City
 
 class WeatherByWeekFragment : Fragment() {
+    private val viewModel: WeatherViewModel by viewModels(
+        factoryProducer = App.getComponent()::getWeatherViewModelFactory
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val weather = createViewModel()
+        val weather = viewModel
         val binding: FragmentWeatherByWeekBinding = createBinding(weather)
 
         setupTopBar(binding, weather)
         setupWeatherRecycler(binding, weather)
         setupCity(binding, weather)
-    }
-
-    private fun createViewModel(): WeatherViewModel {
-        val factory = App.getComponent().weatherViewModelFactory
-        return ViewModelProvider(this, factory).get(WeatherViewModel::class.java)
     }
 
     private fun createBinding(weather: WeatherViewModel): FragmentWeatherByWeekBinding {
