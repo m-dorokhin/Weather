@@ -26,17 +26,7 @@ class WeatherByWeekFragment : Fragment() {
         val weather = ViewModelProvider(this, factory).get(WeatherViewModel::class.java)
         binding.weather = weather
 
-        val adapter = WeatherByDayAdapter(ArrayList())
-        binding.weatherRecycler.adapter = adapter
-        weather.sixteenDayWeathers.observe(this) { dayWeathers ->
-            dayWeathers.forEach {
-                it.setGotoDetailedDayWeather { cityId, date ->
-                    gotoWeatherByDay(cityId, date.time)
-                }
-            }
-            adapter.setItems(dayWeathers)
-        }
-        binding.weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
+        setupWeatherRecycler(binding, weather)
 
         binding.city.threshold = 4
         binding.city.setAdapter(CitiesAdapter(requireContext(), App.getComponent().citesDao))
@@ -58,6 +48,23 @@ class WeatherByWeekFragment : Fragment() {
         binding.topBar.setOnClickListener {
             gotoWeatherByDay(weather.cityId, weather.date.time)
         }
+    }
+
+    private fun setupWeatherRecycler(
+        binding: FragmentWeatherByWeekBinding,
+        weather: WeatherViewModel,
+    ) {
+        val adapter = WeatherByDayAdapter(ArrayList())
+        binding.weatherRecycler.adapter = adapter
+        weather.sixteenDayWeathers.observe(this) { dayWeathers ->
+            dayWeathers.forEach {
+                it.setGotoDetailedDayWeather { cityId, date ->
+                    gotoWeatherByDay(cityId, date.time)
+                }
+            }
+            adapter.setItems(dayWeathers)
+        }
+        binding.weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {
