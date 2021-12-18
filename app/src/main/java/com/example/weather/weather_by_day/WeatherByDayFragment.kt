@@ -49,7 +49,6 @@ class WeatherByDayFragment private constructor() : Fragment() {
         val adapter = WeatherByDayAdapter(ArrayList())
         weatherRecycler.adapter = adapter
         viewModel.detailedWeathers.observe(viewLifecycleOwner) { dayWeathers -> adapter.setItems(dayWeathers) }
-        weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
     companion object {

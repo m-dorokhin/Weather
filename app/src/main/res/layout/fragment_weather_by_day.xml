@@ -8,5 +8,6 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:background="@color/colorBackground"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:context=".common.MainActivity"
 />
