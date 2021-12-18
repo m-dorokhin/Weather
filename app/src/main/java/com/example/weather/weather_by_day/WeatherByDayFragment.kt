@@ -19,7 +19,7 @@ private val TAG = WeatherByDayFragment::class.simpleName
 
 class WeatherByDayFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_weather_by_day, container)
+        inflater.inflate(R.layout.fragment_weather_by_day, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val cityId = arguments?.getInt(EXTRA_CITY_ID) ?: 484646
