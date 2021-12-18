@@ -24,7 +24,6 @@ class WeatherByWeekFragment : Fragment() {
 
         val factory = App.getComponent().weatherViewModelFactory
         val weather = ViewModelProvider(this, factory).get(WeatherViewModel::class.java)
-        weather.setContext(requireContext())
         binding.weather = weather
 
         val adapter = WeatherByDayAdapter(ArrayList())

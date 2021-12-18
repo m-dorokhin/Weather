@@ -1,6 +1,5 @@
 package com.example.weather.weather_by_week;
 
-import android.content.Context;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableDouble;
@@ -34,8 +33,6 @@ public class WeatherViewModel extends ViewModel {
 
     private int cityId = 0;
 
-    private Context context;
-
     private Date date = new Date();
 
     public final ObservableField<String> city = new ObservableField<>("");
@@ -49,10 +46,6 @@ public class WeatherViewModel extends ViewModel {
     public final ObservableInt weatherIcon = new ObservableInt(R.drawable.d_01_clear_sky);
 
     private final MutableLiveData<List<DayWeather>> sixteenDayWeathers = new MutableLiveData<>();
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
 
     public void setCityId(long id) {
         cityId = (int) id;
