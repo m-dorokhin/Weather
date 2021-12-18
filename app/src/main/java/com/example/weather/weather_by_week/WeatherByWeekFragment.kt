@@ -27,7 +27,7 @@ class WeatherByWeekFragment : Fragment() {
 
         binding.setupTopBar()
         binding.setupWeatherRecycler()
-        setupCity(binding)
+        binding.setupCity()
     }
 
     private fun createBinding(): FragmentWeatherByWeekBinding {
@@ -67,12 +67,12 @@ class WeatherByWeekFragment : Fragment() {
             .commit()
     }
 
-    private fun setupCity(binding: FragmentWeatherByWeekBinding) {
-        binding.city.threshold = 4
-        binding.city.setAdapter(CitiesAdapter(requireContext(), App.getComponent().citesDao))
-        binding.city.onItemClickListener = OnItemClickListener { adapterView, view, position, id ->
+    private fun FragmentWeatherByWeekBinding.setupCity(): FragmentWeatherByWeekBinding {
+        city.threshold = 4
+        city.setAdapter(CitiesAdapter(requireContext(), App.getComponent().citesDao))
+        city.onItemClickListener = OnItemClickListener { adapterView, view, position, id ->
             val city = adapterView.getItemAtPosition(position) as City
-            binding.city.setText(city.name)
+            this.city.setText(city.name)
             viewModel.setCityId(city.id)
             viewModel.updateCityWeight(city)
 
@@ -82,7 +82,8 @@ class WeatherByWeekFragment : Fragment() {
             inputMethodManager.hideSoftInputFromWindow(adapterView.applicationWindowToken, 0)
 
             // Очищаем фокус
-            binding.city.clearFocus()
+            this.city.clearFocus()
         }
+        return this
     }
 }
