@@ -33,12 +33,16 @@ class WeatherByDayFragment private constructor() : Fragment() {
         Log.i(TAG, "Load daily weather for cityId: " + cityId + " and date: " +
                 SimpleDateFormat("E yyyy.MM.dd").format(date))
 
+        val weather = createViewModel()
+        setupOnDayRecycler(weather)
+    }
+
+    private fun createViewModel(): DetailedDayWeatherViewModel {
         val factory = App.getComponent().detailedDayWeatherViewModelFactory
         factory.setCityId(cityId)
         factory.setDate(date)
         val weather = ViewModelProvider(this, factory).get(DetailedDayWeatherViewModel::class.java)
-
-        setupOnDayRecycler(weather)
+        return weather
     }
 
     private fun setupOnDayRecycler(weather: DetailedDayWeatherViewModel) {
