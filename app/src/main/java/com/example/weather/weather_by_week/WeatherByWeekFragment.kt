@@ -26,7 +26,7 @@ class WeatherByWeekFragment : Fragment() {
         val binding: FragmentWeatherByWeekBinding = createBinding()
 
         binding.setupTopBar()
-        setupWeatherRecycler(binding)
+        binding.setupWeatherRecycler()
         setupCity(binding)
     }
 
@@ -44,10 +44,10 @@ class WeatherByWeekFragment : Fragment() {
         return this
     }
 
-    private fun setupWeatherRecycler(binding: FragmentWeatherByWeekBinding) {
+    private fun FragmentWeatherByWeekBinding.setupWeatherRecycler(): FragmentWeatherByWeekBinding {
         val adapter = WeatherByDayAdapter(ArrayList())
-        binding.weatherRecycler.adapter = adapter
-        viewModel.sixteenDayWeathers.observe(this) { dayWeathers ->
+        weatherRecycler.adapter = adapter
+        viewModel.sixteenDayWeathers.observe(this@WeatherByWeekFragment) { dayWeathers ->
             dayWeathers.forEach {
                 it.setGotoDetailedDayWeather { cityId, date ->
                     gotoWeatherByDay(cityId, date.time)
@@ -55,7 +55,8 @@ class WeatherByWeekFragment : Fragment() {
             }
             adapter.setItems(dayWeathers)
         }
-        binding.weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
+        weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
+        return this
     }
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {
