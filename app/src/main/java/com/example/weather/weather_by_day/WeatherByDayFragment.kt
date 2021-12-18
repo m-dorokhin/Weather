@@ -38,6 +38,10 @@ class WeatherByDayFragment private constructor() : Fragment() {
         factory.setDate(date)
         val weather = ViewModelProvider(this, factory).get(DetailedDayWeatherViewModel::class.java)
 
+        setupOnDayRecycler(weather)
+    }
+
+    private fun setupOnDayRecycler(weather: DetailedDayWeatherViewModel) {
         val weatherRecycler: RecyclerView = requireView().findViewById(R.id.on_day_recycler)
         val adapter = WeatherByDayAdapter(ArrayList())
         weatherRecycler.adapter = adapter
