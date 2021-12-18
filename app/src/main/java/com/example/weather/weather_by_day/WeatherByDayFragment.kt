@@ -20,7 +20,9 @@ private val TAG = WeatherByDayFragment::class.simpleName
 private const val EXTRA_CITY_ID = "city_id"
 private const val EXTRA_DATE = "date"
 
-class WeatherByDayFragment : Fragment() {
+fun WeatherByDayFragment(cityId: Int, date: Long): WeatherByDayFragment = WeatherByDayFragment.create(cityId, date)
+
+class WeatherByDayFragment private constructor(): Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_weather_by_day, container, false)
 
@@ -45,7 +47,7 @@ class WeatherByDayFragment : Fragment() {
     }
 
     companion object {
-        fun createWeatherByDayFragment(cityId: Int, date: Long): WeatherByDayFragment {
+        fun create(cityId: Int, date: Long): WeatherByDayFragment {
             val fragment = WeatherByDayFragment()
             val bundle = Bundle()
             bundle.putInt(EXTRA_CITY_ID, cityId)

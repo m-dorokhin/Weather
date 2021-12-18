@@ -67,7 +67,7 @@ class WeatherByWeekFragment : Fragment() {
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, WeatherByDayFragment.createWeatherByDayFragment(cityId, date))
+            .replace(R.id.fragment_container, WeatherByDayFragment(cityId, date))
             .setReorderingAllowed(true)
             .addToBackStack(null)
             .commit()
