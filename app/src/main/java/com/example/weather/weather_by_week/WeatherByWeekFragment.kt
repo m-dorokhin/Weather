@@ -22,12 +22,9 @@ class WeatherByWeekFragment : Fragment() {
         val weather = createViewModel()
         val binding: FragmentWeatherByWeekBinding = createBinding(weather)
 
+        setupTopBar(binding, weather)
         setupWeatherRecycler(binding, weather)
         setupCity(binding, weather)
-
-        binding.topBar.setOnClickListener {
-            gotoWeatherByDay(weather.cityId, weather.date.time)
-        }
     }
 
     private fun createViewModel(): WeatherViewModel {
@@ -40,6 +37,15 @@ class WeatherByWeekFragment : Fragment() {
             DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_weather_by_week)
         binding.weather = weather
         return binding
+    }
+
+    private fun setupTopBar(
+        binding: FragmentWeatherByWeekBinding,
+        weather: WeatherViewModel,
+    ) {
+        binding.topBar.setOnClickListener {
+            gotoWeatherByDay(weather.cityId, weather.date.time)
+        }
     }
 
     private fun setupWeatherRecycler(
