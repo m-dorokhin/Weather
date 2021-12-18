@@ -27,23 +27,7 @@ class WeatherByWeekFragment : Fragment() {
         binding.weather = weather
 
         setupWeatherRecycler(binding, weather)
-
-        binding.city.threshold = 4
-        binding.city.setAdapter(CitiesAdapter(requireContext(), App.getComponent().citesDao))
-        binding.city.onItemClickListener = OnItemClickListener { adapterView, view, position, id ->
-            val city = adapterView.getItemAtPosition(position) as City
-            binding.city.setText(city.name)
-            weather.setCityId(city.id)
-            weather.updateCityWeight(city)
-
-            // Скроем экранную клавиатуру
-            val inputMethodManager =
-                getSystemService(requireContext(), InputMethodManager::class.java) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(adapterView.applicationWindowToken, 0)
-
-            // Очищаем фокус
-            binding.city.clearFocus()
-        }
+        setupCity(binding, weather)
 
         binding.topBar.setOnClickListener {
             gotoWeatherByDay(weather.cityId, weather.date.time)
@@ -73,5 +57,27 @@ class WeatherByWeekFragment : Fragment() {
             .setReorderingAllowed(true)
             .addToBackStack(null)
             .commit()
+    }
+
+    private fun setupCity(
+        binding: FragmentWeatherByWeekBinding,
+        weather: WeatherViewModel,
+    ) {
+        binding.city.threshold = 4
+        binding.city.setAdapter(CitiesAdapter(requireContext(), App.getComponent().citesDao))
+        binding.city.onItemClickListener = OnItemClickListener { adapterView, view, position, id ->
+            val city = adapterView.getItemAtPosition(position) as City
+            binding.city.setText(city.name)
+            weather.setCityId(city.id)
+            weather.updateCityWeight(city)
+
+            // Скроем экранную клавиатуру
+            val inputMethodManager =
+                getSystemService(requireContext(), InputMethodManager::class.java) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(adapterView.applicationWindowToken, 0)
+
+            // Очищаем фокус
+            binding.city.clearFocus()
+        }
     }
 }
