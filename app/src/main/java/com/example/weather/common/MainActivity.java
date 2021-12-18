@@ -1,4 +1,4 @@
-package com.example.weather.weather_by_week;
+package com.example.weather.common;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
