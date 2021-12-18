@@ -174,7 +174,8 @@
                 android:layout_height="0dp"
                 android:scrollbars="vertical"
                 android:layout_weight="1"
-                android:background="@color/colorBackground" />
+                android:background="@color/colorBackground"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </layout>

@@ -54,7 +54,6 @@ class WeatherByWeekFragment : Fragment() {
             }
             adapter.setItems(dayWeathers)
         }
-        weatherRecycler.layoutManager = LinearLayoutManager(requireContext())
         return this
     }
 
