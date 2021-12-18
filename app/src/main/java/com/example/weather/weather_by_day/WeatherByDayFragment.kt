@@ -23,13 +23,8 @@ private const val EXTRA_DATE = "date"
 fun WeatherByDayFragment(cityId: Int, date: Long): WeatherByDayFragment = WeatherByDayFragment.create(cityId, date)
 
 class WeatherByDayFragment private constructor() : Fragment() {
-    private val cityId: Int get() = arguments?.getInt(EXTRA_CITY_ID) ?: 484646
-
-    private val date: Date
-        get() {
-            val dateTimestamp = arguments?.getLong(EXTRA_DATE) ?: Date().time
-            return Date(dateTimestamp)
-        }
+    private val cityId: Int get() = arguments?.getInt(EXTRA_CITY_ID)!!
+    private val date: Date get() = Date(arguments?.getLong(EXTRA_DATE)!!)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_weather_by_day, container, false)
