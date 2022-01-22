@@ -8,6 +8,7 @@ android {
         applicationId "com.example.weather"
         minSdkVersion 19
         targetSdkVersion 31
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -40,6 +41,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
     implementation "android.arch.persistence.room:runtime:1.1.1"
+
+    //MultiDex
+    implementation "androidx.multidex:multidex:2.0.1"
 
     // Android KTX
     implementation "androidx.core:core-ktx:+"
