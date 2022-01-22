@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
@@ -18,12 +16,7 @@ import java.util.*
 
 private val TAG = WeatherByDayFragment::class.simpleName
 
-private const val EXTRA_CITY_ID = "city_id"
-private const val EXTRA_DATE = "date"
-
-fun WeatherByDayFragment(cityId: Int, date: Long): WeatherByDayFragment = WeatherByDayFragment.create(cityId, date)
-
-class WeatherByDayFragment private constructor() : Fragment() {
+class WeatherByDayFragment : Fragment() {
     private val cityId: Int get() = arguments?.getInt(EXTRA_CITY_ID)!!
     private val date: Date get() = Date(arguments?.getLong(EXTRA_DATE)!!)
 
@@ -52,13 +45,7 @@ class WeatherByDayFragment private constructor() : Fragment() {
     }
 
     companion object {
-        fun create(cityId: Int, date: Long): WeatherByDayFragment {
-            val fragment = WeatherByDayFragment()
-            val bundle = Bundle()
-            bundle.putInt(EXTRA_CITY_ID, cityId)
-            bundle.putLong(EXTRA_DATE, date)
-            fragment.arguments = bundle
-            return fragment
-        }
+        const val EXTRA_CITY_ID = "city_id"
+        const val EXTRA_DATE = "date"
     }
 }

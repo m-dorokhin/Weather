@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/weatherByWeekFragment">
+    <fragment
+            android:id="@+id/weatherByWeekFragment"
+            android:name="com.example.weather.weather_by_week.WeatherByWeekFragment"
+            android:label="Погода на неделю"
+            tools:layout="@layout/fragment_weather_by_week">
+        <action
+                android:id="@+id/action_weatherByWeekFragment_to_weatherByDayFragment"
+                app:destination="@id/weatherByDayFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/weatherByDayFragment"
+            android:name="com.example.weather.weather_by_day.WeatherByDayFragment"
+            android:label="Погода на день"
+            tools:layout="@layout/fragment_weather_by_day"/>
+</navigation>

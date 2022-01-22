@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
 import com.example.weather.common.configurations.App
@@ -60,11 +62,13 @@ class WeatherByWeekFragment : Fragment() {
     }
 
     private fun gotoWeatherByDay(cityId: Int, date: Long) {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, WeatherByDayFragment(cityId, date))
-            .setReorderingAllowed(true)
-            .addToBackStack(null)
-            .commit()
+        findNavController().navigate(
+            R.id.action_weatherByWeekFragment_to_weatherByDayFragment,
+            bundleOf(
+                WeatherByDayFragment.EXTRA_CITY_ID to cityId,
+                WeatherByDayFragment.EXTRA_DATE to date
+            )
+        )
     }
 
     private fun FragmentWeatherByWeekBinding.setupCity(): FragmentWeatherByWeekBinding {
