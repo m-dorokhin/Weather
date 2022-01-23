@@ -9,5 +9,5 @@
         android:scrollbars="vertical"
         android:background="@color/colorBackground"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context=".common.MainActivity"
+        tools:context=".common.activity.MainActivity"
 />
