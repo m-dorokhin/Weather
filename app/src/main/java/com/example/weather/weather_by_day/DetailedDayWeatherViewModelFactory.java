@@ -10,16 +10,6 @@ import java.util.Date;
 
 public class DetailedDayWeatherViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private OpenweathermapApi api;
-    private int cityId;
-    private Date date;
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public DetailedDayWeatherViewModelFactory(OpenweathermapApi api) {
         this.api = api;
@@ -27,7 +17,7 @@ public class DetailedDayWeatherViewModelFactory extends ViewModelProvider.NewIns
 
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass == DetailedDayWeatherViewModel.class) {
-            return (T) new DetailedDayWeatherViewModel(api, cityId, date);
+            return (T) new DetailedDayWeatherViewModel(api);
         }
         return null;
     }

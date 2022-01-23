@@ -15,6 +15,7 @@ import com.example.weather.common.helpers.IconHelper;
 import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -34,22 +35,28 @@ public class DetailedDayWeatherViewModel extends ViewModel {
 
     private final MutableLiveData<List<DayWeather>> detailedWeathers = new MutableLiveData<>();
 
-    public DetailedDayWeatherViewModel(OpenweathermapApi api, int cityId, @NonNull Date date){
+    public DetailedDayWeatherViewModel(OpenweathermapApi api){
         this.api = api;
-        this.cityId = cityId;
-        this.date = date;
-
-        GetWeather();
     }
 
     public LiveData<List<DayWeather>> getDetailedWeathers() {
         return detailedWeathers;
     }
 
+    public void getWeather(int cityId, @NonNull Date date) {
+        this.cityId = cityId;
+        this.date = date;
+
+        GetWeather();
+    }
+
     /**
      * Получить погоду для указанного города
      */
     private void GetWeather() {
+        Log.i(DetailedDayWeatherViewModel.class.getSimpleName(), "Load daily weather for cityId: " + cityId + " and date: " +
+            new SimpleDateFormat("E yyyy.MM.dd").format(date));
+
         api.getHourlyWeather(cityId, this.apiKey).enqueue(new Callback<HourlyWeather>() {
             @Override
             public void onResponse(Call<HourlyWeather> call, Response<HourlyWeather> response) {

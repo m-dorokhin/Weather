@@ -21,10 +21,7 @@ class WeatherByDayFragment : Fragment() {
     private val date: Date get() = Date(arguments?.getLong(EXTRA_DATE)!!)
 
     private val viewModel: DetailedDayWeatherViewModel by viewModels {
-        App.getComponent().detailedDayWeatherViewModelFactory.apply {
-            setCityId(cityId)
-            setDate(date)
-        }
+        App.getComponent().detailedDayWeatherViewModelFactory
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -35,6 +32,7 @@ class WeatherByDayFragment : Fragment() {
                 SimpleDateFormat("E yyyy.MM.dd").format(date))
 
         setupOnDayRecycler()
+        viewModel.getWeather(cityId, date)
     }
 
     private fun setupOnDayRecycler() {
