@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
+import com.example.weather.common.activity.ActivityComponent;
+import com.example.weather.common.activity.ActivityComponentBuilderModule;
 import com.example.weather.weather_by_day.DetailedDayWeatherViewModelFactory;
 import com.example.weather.weather_by_week.WeatherViewModel;
 import com.example.weather.weather_by_week.WeatherViewModelFactory;
@@ -15,7 +17,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ContextModule.class, MainModule.class})
+@Component(modules = {ContextModule.class, MainModule.class, ActivityComponentBuilderModule.class})
 public interface AppComponent {
     OpenweathermapApi getOpenweathermapApi();
 
@@ -24,6 +26,8 @@ public interface AppComponent {
     DetailedDayWeatherViewModelFactory getDetailedDayWeatherViewModelFactory();
 
     CitiesDao getCitesDao();
+
+    ActivityComponent.Builder getActivityComponentBuilder();
 
     void injectsWeatherViewModel(WeatherViewModel weatherViewModel);
 
