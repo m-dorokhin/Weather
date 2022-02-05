@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
 import com.example.weather.common.configurations.App
 import com.example.weather.common.models.DayWeather
 import com.example.weather.common.viewModel.getViewModelFactory
 import com.example.weather.databinding.FragmentWeatherByWeekBinding
-import com.example.weather.weather_by_day.WeatherByDayFragment
 import com.example.weather.weather_by_week.data.local.City
 
 class WeatherByWeekFragment : Fragment() {
@@ -39,7 +36,7 @@ class WeatherByWeekFragment : Fragment() {
 
     private fun FragmentWeatherByWeekBinding.setupTopBar(): FragmentWeatherByWeekBinding {
         topBar.setOnClickListener {
-            gotoWeatherByDay(viewModel.cityId, viewModel.date.time)
+            viewModel.gotoWeatherByDay(viewModel.date.time)
         }
         return this
     }
@@ -54,20 +51,10 @@ class WeatherByWeekFragment : Fragment() {
     }
 
     private fun setupCellClickListener(dayWeather: DayWeather): DayWeather {
-        dayWeather.setGotoDetailedDayWeather { cityId, date ->
-            gotoWeatherByDay(cityId, date.time)
+        dayWeather.setGotoDetailedDayWeather { date ->
+            viewModel.gotoWeatherByDay(date.time)
         }
         return dayWeather
-    }
-
-    private fun gotoWeatherByDay(cityId: Int, date: Long) {
-        findNavController().navigate(
-            R.id.action_weatherByWeekFragment_to_weatherByDayFragment,
-            bundleOf(
-                WeatherByDayFragment.EXTRA_CITY_ID to cityId,
-                WeatherByDayFragment.EXTRA_DATE to date
-            )
-        )
     }
 
     private fun FragmentWeatherByWeekBinding.setupCity(): FragmentWeatherByWeekBinding {

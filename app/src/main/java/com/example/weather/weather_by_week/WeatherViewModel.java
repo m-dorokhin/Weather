@@ -16,6 +16,7 @@ import com.example.weather.common.helpers.IconHelper;
 import com.example.weather.common.helpers.StringHelper;
 import com.example.weather.common.models.DayWeather;
 import com.example.weather.weather_by_week.data.local.*;
+import com.example.weather.weather_by_week.router.WeatherByWeekRouter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +30,7 @@ public class WeatherViewModel extends ViewModel {
 
     private OpenweathermapApi api;
     private AppDatabase database;
+    private WeatherByWeekRouter router;
     private String apiKey = "21a8d636ae57d56ec6fb2ebb46d3e0b4";
 
     private int cityId = 0;
@@ -53,10 +55,6 @@ public class WeatherViewModel extends ViewModel {
         SaveSettings();
     }
 
-    public int getCityId() {
-        return cityId;
-    }
-
     public Date getDate() {
         return this.date;
     }
@@ -69,9 +67,13 @@ public class WeatherViewModel extends ViewModel {
         return sixteenDayWeathers;
     }
 
-    public WeatherViewModel(@NonNull OpenweathermapApi api, @NonNull AppDatabase database) {
+    public WeatherViewModel(
+            @NonNull OpenweathermapApi api,
+            @NonNull AppDatabase database,
+            @NonNull WeatherByWeekRouter router) {
         this.api = api;
         this.database = database;
+        this.router = router;
 
         LoadSettings();
         GetWeather(this.cityId);
@@ -143,8 +145,6 @@ public class WeatherViewModel extends ViewModel {
 
                         DayWeather dayWeather = new DayWeather();
 
-
-                        dayWeather.setCityId(getCityId());
                         dayWeather.date= new Date(item.dt * 1000);
 
                         if (item.temp != null)
@@ -217,5 +217,13 @@ public class WeatherViewModel extends ViewModel {
     public void updateCityWeight(City city) {
         CitiesDao dao = this.database.citiesDao();
         dao.updateCities(city);
+    }
+
+    public void gotoWeatherByDay(long date) {
+        if (cityId == 0) {
+            Log.w(WeatherViewModel.class.getSimpleName(), "Переход на экран по дням выполнен не был, так как город не выбран.");
+            return;
+        }
+        router.gotoWeatherByDay(cityId, date);
     }
 }

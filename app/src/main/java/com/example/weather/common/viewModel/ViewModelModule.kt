@@ -20,12 +20,6 @@ class ViewModelModule {
 
     @Provides
     @IntoMap
-    @ViewModelKey(WeatherViewModel::class)
-    fun provideWeatherViewModel(api: OpenweathermapApi, database: AppDatabase): ViewModel =
-        WeatherViewModel(api, database)
-
-    @Provides
-    @IntoMap
     @ViewModelKey(DetailedDayWeatherViewModel::class)
     fun provideDetailedDayWeatherViewModel(api: OpenweathermapApi): ViewModel = DetailedDayWeatherViewModel(api)
 }
