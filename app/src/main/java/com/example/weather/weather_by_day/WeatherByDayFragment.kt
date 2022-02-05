@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
-import com.example.weather.common.configurations.App
+import com.example.weather.common.viewModel.getViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,9 +20,7 @@ class WeatherByDayFragment : Fragment() {
     private val cityId: Int get() = arguments?.getInt(EXTRA_CITY_ID)!!
     private val date: Date get() = Date(arguments?.getLong(EXTRA_DATE)!!)
 
-    private val viewModel: DetailedDayWeatherViewModel by viewModels {
-        App.getComponent().detailedDayWeatherViewModelFactory
-    }
+    private val viewModel: DetailedDayWeatherViewModel by viewModels { getViewModelFactory() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_weather_by_day, container, false)

@@ -1,22 +1,17 @@
 package com.example.weather.common.configurations;
 
 import android.content.Context;
-
 import androidx.room.Room;
-
-import com.example.weather.weather_by_day.DetailedDayWeatherViewModelFactory;
-import com.example.weather.weather_by_week.WeatherViewModelFactory;
 import com.example.weather.common.apis.OpenweathermapApi;
 import com.example.weather.weather_by_week.data.local.AppDatabase;
 import com.example.weather.weather_by_week.data.local.CitiesDao;
 import com.example.weather.weather_by_week.data.local.FillDataIntoDb;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+
+import javax.inject.Singleton;
 
 @Module
 public class MainModule {
@@ -28,18 +23,6 @@ public class MainModule {
                 .build();
 
         return retrofit.create(OpenweathermapApi.class);
-    }
-
-    @Provides
-    public WeatherViewModelFactory getWeatherViewModelFactory(
-            OpenweathermapApi api, AppDatabase database) {
-        return new WeatherViewModelFactory(api, database);
-    }
-
-    @Provides
-    public DetailedDayWeatherViewModelFactory getDetailedDayWeatherViewModelFactory(
-            OpenweathermapApi api){
-        return new DetailedDayWeatherViewModelFactory(api);
     }
 
     @Provides

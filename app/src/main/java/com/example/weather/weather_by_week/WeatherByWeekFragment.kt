@@ -13,14 +13,13 @@ import com.example.weather.R
 import com.example.weather.common.WeatherByDayAdapter
 import com.example.weather.common.configurations.App
 import com.example.weather.common.models.DayWeather
+import com.example.weather.common.viewModel.getViewModelFactory
 import com.example.weather.databinding.FragmentWeatherByWeekBinding
 import com.example.weather.weather_by_day.WeatherByDayFragment
 import com.example.weather.weather_by_week.data.local.City
 
 class WeatherByWeekFragment : Fragment() {
-    private val viewModel: WeatherViewModel by viewModels(
-        factoryProducer = App.getComponent()::getWeatherViewModelFactory
-    )
+    private val viewModel: WeatherViewModel by viewModels { getViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
