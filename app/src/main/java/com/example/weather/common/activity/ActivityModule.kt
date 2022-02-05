@@ -4,9 +4,9 @@ import android.app.Activity
 import dagger.Module
 import dagger.Provides
 
-@ActivityScope
 @Module
 class ActivityModule(private val activity: Activity) {
+    @ActivityScope
     @Provides
     fun provideActivity(): Activity = activity
 }
